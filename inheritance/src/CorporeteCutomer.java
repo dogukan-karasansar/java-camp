@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public class CorporeteCutomer {
+public class CorporeteCutomer extends Customer{
+    String companyName;
+    String taxtNumber;
 }

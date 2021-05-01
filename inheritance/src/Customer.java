@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public class Customer {
+public class Customer {
+    int id;
+    String customerNumber;
 }

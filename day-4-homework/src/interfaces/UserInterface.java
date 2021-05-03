@@ -1,3 +1,7 @@
+package interfaces;
+
+import entities.User;
+
 public interface UserInterface {
     void login(User user);
     void register(User user);

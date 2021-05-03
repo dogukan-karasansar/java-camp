@@ -1,3 +1,7 @@
+package managers;
+
+import entities.Gamer;
+
 public class GamerManager {
     public void add(Gamer gamer) {
 

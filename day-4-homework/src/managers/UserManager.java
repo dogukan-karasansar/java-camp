@@ -1,3 +1,8 @@
+package managers;
+
+import entities.User;
+import interfaces.UserInterface;
+
 public class UserManager implements UserInterface {
     @Override
     public void login(User user) {

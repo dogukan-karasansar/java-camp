@@ -1,3 +1,5 @@
+package entities;
+
 public class Sale {
     private int id;
     private Game game;

@@ -1,3 +1,5 @@
+package entities;
+
 public class Campaign {
     private int id;
     private String name;

@@ -1,3 +1,12 @@
+import entities.Campaign;
+import entities.Game;
+import entities.Gamer;
+import entities.User;
+import managers.CampaignManager;
+import managers.GamerManager;
+import managers.SalesManager;
+import managers.UserManager;
+
 public class Main {
 
     public static void main(String[] args) {

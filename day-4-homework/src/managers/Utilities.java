@@ -1,3 +1,7 @@
+package managers;
+
+import entities.*;
+
 public class Utilities {
     public static void checkUser(User user) {
         if (user.getFirstName().equals("Doğukan")) {

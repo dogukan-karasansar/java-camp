@@ -1,3 +1,5 @@
+package entities;
+
 public class Gamer extends User{
     private int gamesPurchased;
     private double cash;

@@ -1,3 +1,7 @@
+package managers;
+
+import entities.Campaign;
+
 public class CampaignManager {
     public void add(Campaign campaign) {
         Campaign campaigns = new Campaign();

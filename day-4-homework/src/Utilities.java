@@ -13,6 +13,7 @@ public class Utilities {
         sale.setGame(game);
         sale.setCampaign(campaign);
         gamer.setGamesPurchased(gamer.getGamesPurchased() + 1);
+        gamer.setCash(gamer.getCash() - sale.getPrice());
         StringBuilder invoice = new StringBuilder();
         invoice.append("**********JAVA FATURA**********\n");
         invoice.append("Satın Alan Oyuncu: " + sale.getGamer().getFirstName() + " " + sale.getGamer().getLastName()+"\n");

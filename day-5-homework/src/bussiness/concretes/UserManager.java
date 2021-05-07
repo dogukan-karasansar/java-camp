@@ -15,9 +15,9 @@ public class UserManager implements UserService {
     private List<User> users = new ArrayList<User>();
     private UserDao userDao;
     private UserSignService userSignService;
+    private ValidatorManager validatorManager = new ValidatorManager();
 
-    private static final Pattern ptr = Pattern.compile("^(.+)@(.+)$");
-    private Scanner input = new Scanner(System.in);
+
 
     public UserManager(UserDao userDao, UserSignService userSignService) {
         this.userDao = userDao;
@@ -26,34 +26,20 @@ public class UserManager implements UserService {
 
     @Override
     public void add(User user) {
-        for(User usr : users) {
-            if(usr.getEmail().equals(user.getEmail())){
-                System.out.println("Bu email daha önce kayıt edilmiş");
-                return;
-            }
+        if(!validatorManager.checkMail(user)) {
+            System.out.println("Bu email daha önce kayıt edilmiş");
         }
-
-        if(!ptr.matcher(user.getEmail()).matches()) {
+        else if(!validatorManager.checkInvalidMail(user)) {
             System.out.println("Hatalı tipde email girişi");
-            return;
-        } else if(user.getPassword().length() < 6) {
+        } else if(!validatorManager.checkPasswordLength(user)) {
             System.out.println("Girilen şifre en az 6 karakterden oluşmalı");
-            return;
-        } else if(user.getFirstName().length() < 2 && user.getLastName().length() < 2) {
+        } else if(!validatorManager.checkNameValid(user)) {
             System.out.println("ad ve soyad en az 2 karakterden oluşmalı");
-            return;
         } else {
-            System.out.print("Emailinize gelen postayı onaylayın: ");
-            String onay = input.next().toLowerCase(Locale.ROOT);
-            if (onay.equals("onay")) {
-                user.setVerified(true);
-            } else {
-                user.setVerified(false);
-            }
-            if (user.isVerified()) {
+
+            if (validatorManager.checkVerified(user)) {
                 userDao.add(user);
                 userSignService.register(user);
-                System.out.println("Üyeliğiniz gerçekleşti");
             } else {
                 System.out.println("Önce mailinizi onaylayın");
                 return;

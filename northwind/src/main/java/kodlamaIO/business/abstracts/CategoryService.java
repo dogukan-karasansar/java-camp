@@ -1,2 +1,9 @@
-package kodlamaIO.business.abstracts;public interface CategoryService {
+package kodlamaIO.business.abstracts;
+
+import kodlamaIO.entities.concretes.Category;
+
+import java.util.List;
+
+public interface CategoryService {
+    List<Category> getAll();
 }

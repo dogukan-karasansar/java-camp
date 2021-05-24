@@ -1,6 +1,10 @@
 package kodlamaIO.business.concretes;
 
 import kodlamaIO.business.abstracts.ProductService;
+import kodlamaIO.core.utilities.results.DataResult;
+import kodlamaIO.core.utilities.results.Result;
+import kodlamaIO.core.utilities.results.SuccessDataResult;
+import kodlamaIO.core.utilities.results.SuccessResult;
 import kodlamaIO.dataAccess.abstracts.ProductDao;
 import kodlamaIO.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +23,13 @@ public class ProductManager implements ProductService {
     }
 
     @Override
-    public List<Product> getAll() {
-        return this.productDao.findAll();
+    public DataResult<List<Product>> getAll() {
+        return new SuccessDataResult<List<Product>>(this.productDao.findAll(), "Data Listelendi");
+    }
+
+    @Override
+    public Result add(Product product) {
+        this.productDao.save(product);
+        return new SuccessResult("Ürün Eklendi");
     }
 }

@@ -1,9 +1,16 @@
 package dkn.hrms.entities.concretes;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "system_personnels")
+@AllArgsConstructor
+@NoArgsConstructor
 public class SystemPersonnel {
     @Id
     @GeneratedValue
@@ -15,45 +22,4 @@ public class SystemPersonnel {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-
-    public SystemPersonnel() {}
-
-    public SystemPersonnel(int id, int userId, String firstName, String lastName) {
-        this.setId(id);
-        this.setUserId(userId);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 }

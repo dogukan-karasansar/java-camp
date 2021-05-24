@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class SystemPersonnel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
     @Column(name = "user_İd")

@@ -14,7 +14,7 @@ public class MernisAdapter implements MernisService {
     @Override
     public boolean checkMernis(JobSeeker jobSeeker) {
         try {
-            publicSoap.TCKimlikNoDogrula(Long.valueOf(jobSeeker.getNationalIdentity()), jobSeeker.getFirstName(), jobSeeker.getLastName(), 2002);
+            publicSoap.TCKimlikNoDogrula(Long.valueOf(jobSeeker.getNationalIdentity()), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getBirthdayDate().getYear());
             jobSeeker.setMernisVerified(true);
             return true;
         } catch (Exception e) {

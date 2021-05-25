@@ -1,10 +1,13 @@
 package dkn.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -23,7 +26,9 @@ public class JobSeeker {
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "birth_date")
-    private String birthdayDate;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthdayDate;
     @Column(name = "national_indentity")
     private String nationalIdentity;
     @Column(name = "mernis_verified")

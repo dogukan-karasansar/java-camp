@@ -4,7 +4,7 @@ import dkn.hrms.business.abstracts.AuthService;
 import dkn.hrms.core.utilities.results.Result;
 import dkn.hrms.entities.concretes.Employer;
 import dkn.hrms.entities.concretes.JobSeeker;
-import dkn.hrms.entities.concretes.User;
+import dkn.hrms.core.entities.concretes.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

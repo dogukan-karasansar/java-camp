@@ -1,7 +1,7 @@
 package dkn.hrms.core.utilities.adapters.concretes;
 
 import dkn.hrms.core.utilities.adapters.abstracts.EmailVerifyService;
-import dkn.hrms.entities.concretes.User;
+import dkn.hrms.core.entities.concretes.User;
 import org.springframework.stereotype.Service;
 
 @Service

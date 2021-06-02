@@ -1,10 +1,12 @@
-package dkn.hrms.entities.concretes;
+package dkn.hrms.core.entities.concretes;
 
+import dkn.hrms.entities.concretes.JobSeeker;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity

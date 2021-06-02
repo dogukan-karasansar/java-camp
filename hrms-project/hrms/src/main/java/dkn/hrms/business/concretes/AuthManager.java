@@ -13,7 +13,7 @@ import dkn.hrms.dataAccess.abstracts.JobSeekerDao;
 import dkn.hrms.dataAccess.abstracts.UserDao;
 import dkn.hrms.entities.concretes.Employer;
 import dkn.hrms.entities.concretes.JobSeeker;
-import dkn.hrms.entities.concretes.User;
+import dkn.hrms.core.entities.concretes.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

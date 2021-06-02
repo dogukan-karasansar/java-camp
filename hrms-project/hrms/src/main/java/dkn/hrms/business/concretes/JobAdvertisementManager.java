@@ -45,6 +45,6 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     @Override
     public Result update(JobAdvertisement jobAdvertisement) {
         this.jobAdvertisementDao.save(jobAdvertisement);
-        return new SuccessResult("İlan pasif hale getirildi");
+        return new SuccessResult("İlan Güncellendi");
     }
 }

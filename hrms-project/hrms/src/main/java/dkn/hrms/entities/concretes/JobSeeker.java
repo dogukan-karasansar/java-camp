@@ -1,6 +1,7 @@
 package dkn.hrms.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import dkn.hrms.core.entities.concretes.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,12 +9,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "job_seekers")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","cv"})
+
 public class JobSeeker {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -5,13 +5,11 @@ import dkn.hrms.core.utilities.results.Result;
 import dkn.hrms.entities.concretes.Employer;
 import dkn.hrms.entities.concretes.JobSeeker;
 import dkn.hrms.core.entities.concretes.User;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/auth")
+@CrossOrigin
 public class AuthController {
     private AuthService authService;
 

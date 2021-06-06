@@ -3,6 +3,7 @@ package dkn.hrms.api.controllers;
 import dkn.hrms.business.abstracts.CityService;
 import dkn.hrms.core.utilities.results.DataResult;
 import dkn.hrms.entities.concretes.City;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/city")
+@CrossOrigin
+
 public class CityController {
     private CityService cityService;
 

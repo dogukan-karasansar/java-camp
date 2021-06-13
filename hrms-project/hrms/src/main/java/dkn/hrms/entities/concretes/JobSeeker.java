@@ -23,8 +23,6 @@ public class JobSeeker {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
-    @Column(name = "user_id")
-    private int userId;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -37,4 +35,8 @@ public class JobSeeker {
     private String nationalIdentity;
     @Column(name = "mernis_verified")
     private boolean mernisVerified;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
 }

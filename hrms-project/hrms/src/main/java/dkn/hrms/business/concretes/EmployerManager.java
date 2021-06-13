@@ -33,7 +33,7 @@ public class EmployerManager implements EmployerService {
     @Override
     public Result add(Employer employer, User user) {
         this.userDao.save(user);
-        employer.setUserId(user.getId());
+        employer.setUser(user);
         this.employerDao.save(employer);
         return new SuccessResult();
     }

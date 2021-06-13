@@ -6,9 +6,8 @@ import dkn.hrms.business.abstracts.JobSeekerService;
 import dkn.hrms.business.abstracts.UserService;
 import dkn.hrms.core.utilities.adapters.abstracts.EmailVerifyService;
 import dkn.hrms.core.utilities.adapters.abstracts.MernisService;
-import dkn.hrms.core.utilities.results.ErrorResult;
-import dkn.hrms.core.utilities.results.Result;
-import dkn.hrms.core.utilities.results.SuccessResult;
+import dkn.hrms.core.utilities.results.*;
+import dkn.hrms.dataAccess.abstracts.EmployerDao;
 import dkn.hrms.dataAccess.abstracts.JobSeekerDao;
 import dkn.hrms.dataAccess.abstracts.UserDao;
 import dkn.hrms.entities.concretes.Employer;
@@ -17,9 +16,10 @@ import dkn.hrms.core.entities.concretes.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class AuthManager implements AuthService {
+public class AuthManager<T> implements AuthService {
     private JobSeekerService jobSeekerService;
     private EmployerService employerService;
     private MernisService mrns;
@@ -27,8 +27,9 @@ public class AuthManager implements AuthService {
     private UserService userService;
     private UserDao userDao;
     private JobSeekerDao jobSeekerDao;
+    private EmployerDao employerDao;
 
-    public AuthManager(JobSeekerService jobSeekerService, EmployerService employerService, MernisService mrns, EmailVerifyService emailVerified, UserService userService, UserDao userDao, JobSeekerDao jobSeekerDao) {
+    public AuthManager(JobSeekerService jobSeekerService, EmployerService employerService, MernisService mrns, EmailVerifyService emailVerified, UserService userService, UserDao userDao, JobSeekerDao jobSeekerDao, EmployerDao employerDao) {
         this.jobSeekerService = jobSeekerService;
         this.employerService = employerService;
         this.mrns = mrns;
@@ -36,6 +37,7 @@ public class AuthManager implements AuthService {
         this.userService = userService;
         this.userDao = userDao;
         this.jobSeekerDao = jobSeekerDao;
+        this.employerDao = employerDao;
     }
 
     @Override
@@ -106,6 +108,21 @@ public class AuthManager implements AuthService {
             } else {
                 return new ErrorResult("Email onaylanmadı");
             }
+        }
+    }
+
+    @Override
+    public DataResult<T> loginUser(String email, String password) {
+        var val = this.userDao.findByEmailAndPassword(email, password);
+        var employer = this.employerDao.findByUserId(val.getId());
+        var jobSeeker = this.jobSeekerDao.findByUserId(val.getId());
+        if (employer != null) {
+            return new SuccessDataResult<Employer>(employer, "Giriş Başarılı");
+        } else if (jobSeeker != null) {
+            return new SuccessDataResult<JobSeeker>(jobSeeker, "Giriş Başarılı");
+        }
+        else {
+            return new ErrorDataResult<User>(null, "Hatalı Giriş!");
         }
     }
 }

@@ -1,9 +1,19 @@
 package kodlamaIO.entities.concretes;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Data
 @Entity
 @Table(name = "categories")
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
 public class Category {
     @Id
     @GeneratedValue
@@ -16,45 +26,6 @@ public class Category {
     @Column(name = "picture")
     private String picture;
 
-    public Category() {
-    }
-
-    public Category(int categoryId, String categoryName, String description, String picture) {
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
-        this.description = description;
-        this.picture = picture;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
+   @OneToMany(mappedBy = "category")
+    private List<Product> products;
 }

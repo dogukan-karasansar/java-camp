@@ -33,7 +33,7 @@ public class JobSeekerManager implements JobSeekerService {
     @Override
     public Result add(JobSeeker jobSeeker, User user) {
         this.userDao.save(user);
-        jobSeeker.setUserId(user.getId());
+        jobSeeker.setUser(user);
         this.jobSeekerDao.save(jobSeeker);
         return new SuccessResult();
     }

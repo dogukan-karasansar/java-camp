@@ -1,6 +1,7 @@
 package dkn.hrms.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import dkn.hrms.core.entities.concretes.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +20,6 @@ public class Employer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
-    @Column(name = "user_id")
-    private int userId;
     @Column(name = "company_name")
     private String companyName;
     @Column(name = "phone")
@@ -30,4 +29,8 @@ public class Employer {
 
     @OneToMany(mappedBy = "employer")
     private List<JobAdvertisement> jobAdvertisements;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
 }

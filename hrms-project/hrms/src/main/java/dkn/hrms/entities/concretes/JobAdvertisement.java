@@ -30,8 +30,12 @@ public class JobAdvertisement {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date applicationDeadline;
-    @Column(name = "activated")
+    @Column(name = "activated", columnDefinition = "boolean default false")
     private boolean activated;
+    @Column(name = "type_of_work")
+    private String typeOfWork;
+    @Column(name =  "runtime")
+    private String runtime;
     /*@Column(name = "employer_id")
     private int employerId;
     @Column(name = "job_position_id")

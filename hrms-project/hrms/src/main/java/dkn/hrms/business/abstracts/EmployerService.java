@@ -10,4 +10,5 @@ import java.util.List;
 public interface EmployerService {
     DataResult<List<Employer>> getAll();
     Result add(Employer employer, User user);
+    DataResult<Employer> getEmployer(int id);
 }

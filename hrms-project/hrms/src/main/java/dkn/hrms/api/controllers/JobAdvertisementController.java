@@ -40,6 +40,11 @@ public class JobAdvertisementController {
         return this.jobAdvertisementService.findByJobAdvertisementEmployer(employerId);
     }
 
+    @GetMapping("/getjobadvertisement")
+    public DataResult<JobAdvertisement> getJobAdvertisement(@RequestParam int id) {
+        return this.jobAdvertisementService.jobAdvertisement(id);
+    }
+
     @PutMapping("update")
     public Result update(@RequestBody JobAdvertisement jobAdvertisement) {
         return this.jobAdvertisementService.update(jobAdvertisement);

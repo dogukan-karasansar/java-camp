@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer> {
-    List<JobAdvertisement> findByActivatedTrue();
+    List<JobAdvertisement> findByActivatedTrueOrderByIdDesc();
     List<JobAdvertisement> findByEmployerId(int employerId);
+    JobAdvertisement findJobAdvertisementById(int id);
 }

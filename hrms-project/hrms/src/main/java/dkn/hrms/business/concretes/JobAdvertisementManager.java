@@ -28,7 +28,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
     @Override
     public DataResult<List<JobAdvertisement>> findByActivatedTrue() {
-        return new SuccessDataResult(this.jobAdvertisementDao.findByActivatedTrue(),"Aktif ilanlar listelendi");
+        return new SuccessDataResult(this.jobAdvertisementDao.findByActivatedTrueOrderByIdDesc(),"Aktif ilanlar listelendi");
     }
 
     @Override
@@ -46,5 +46,10 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     public Result update(JobAdvertisement jobAdvertisement) {
         this.jobAdvertisementDao.save(jobAdvertisement);
         return new SuccessResult("İlan Güncellendi");
+    }
+
+    @Override
+    public DataResult<JobAdvertisement> jobAdvertisement(int id) {
+        return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.findJobAdvertisementById(id), "Data Listelendi");
     }
 }

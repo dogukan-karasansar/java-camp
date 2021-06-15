@@ -11,5 +11,6 @@ public interface JobAdvertisementService {
     DataResult<List<JobAdvertisement>> getAllDeadline();
     DataResult<List<JobAdvertisement>> findByJobAdvertisementEmployer(int employerId);
     Result update(JobAdvertisement jobAdvertisement);
+    DataResult<JobAdvertisement> jobAdvertisement(int id);
 
 }

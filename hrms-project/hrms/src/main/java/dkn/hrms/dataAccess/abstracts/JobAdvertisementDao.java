@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer> {
     List<JobAdvertisement> findByActivatedTrueOrderByIdDesc();
-    List<JobAdvertisement> findByEmployerId(int employerId);
+    List<JobAdvertisement> findByEmployerIdOrderByIdDesc(int employerId);
     JobAdvertisement findJobAdvertisementById(int id);
 }

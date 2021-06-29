@@ -1,6 +1,7 @@
 package dkn.hrms.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dkn.hrms.core.entities.concretes.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +15,7 @@ import java.util.List;
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements", "application"})
 public class Employer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +30,8 @@ public class Employer {
 
     @OneToMany(mappedBy = "employer")
     private List<JobAdvertisement> jobAdvertisements;
+
+
 
     @ManyToOne()
     @JoinColumn(name = "user_id")

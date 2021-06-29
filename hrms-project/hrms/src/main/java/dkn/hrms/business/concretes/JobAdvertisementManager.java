@@ -39,7 +39,8 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
     @Override
     public DataResult<List<JobAdvertisement>> findByJobAdvertisementEmployer(int employerId) {
-        return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findByEmployerId(employerId), "Datalar listelendi");
+        Sort sort = Sort.by(Sort.Direction.ASC, "id");
+        return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findByEmployerIdOrderByIdDesc(employerId), "Datalar listelendi");
     }
 
     @Override

@@ -1,6 +1,7 @@
 package dkn.hrms.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dkn.hrms.core.entities.concretes.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +17,7 @@ import java.util.List;
 @Table(name = "job_seekers")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","cv"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "cv", "application"})
 
 public class JobSeeker {
     @Id
@@ -35,6 +36,8 @@ public class JobSeeker {
     private String nationalIdentity;
     @Column(name = "mernis_verified")
     private boolean mernisVerified;
+
+
 
     @ManyToOne()
     @JoinColumn(name = "user_id")

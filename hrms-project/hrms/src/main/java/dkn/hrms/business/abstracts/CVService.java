@@ -10,4 +10,5 @@ import java.util.List;
 public interface CVService {
     Result add(CV cv) throws IOException;
     DataResult<List<CV>> findByJobSeekerId(int jobSeekerId);
+    DataResult<List<CV>> getCv(int id);
 }

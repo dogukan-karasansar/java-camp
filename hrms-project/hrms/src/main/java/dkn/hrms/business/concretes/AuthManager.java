@@ -9,10 +9,12 @@ import dkn.hrms.core.utilities.adapters.abstracts.MernisService;
 import dkn.hrms.core.utilities.results.*;
 import dkn.hrms.dataAccess.abstracts.EmployerDao;
 import dkn.hrms.dataAccess.abstracts.JobSeekerDao;
+import dkn.hrms.dataAccess.abstracts.SystemPersonnelDao;
 import dkn.hrms.dataAccess.abstracts.UserDao;
 import dkn.hrms.entities.concretes.Employer;
 import dkn.hrms.entities.concretes.JobSeeker;
 import dkn.hrms.core.entities.concretes.User;
+import dkn.hrms.entities.concretes.SystemPersonnel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,8 +30,9 @@ public class AuthManager<T> implements AuthService {
     private UserDao userDao;
     private JobSeekerDao jobSeekerDao;
     private EmployerDao employerDao;
+    private SystemPersonnelDao SystemPersonnelDao;
 
-    public AuthManager(JobSeekerService jobSeekerService, EmployerService employerService, MernisService mrns, EmailVerifyService emailVerified, UserService userService, UserDao userDao, JobSeekerDao jobSeekerDao, EmployerDao employerDao) {
+    public AuthManager(JobSeekerService jobSeekerService, EmployerService employerService, MernisService mrns, EmailVerifyService emailVerified, UserService userService, UserDao userDao, JobSeekerDao jobSeekerDao, EmployerDao employerDao, SystemPersonnelDao SystemPersonnelDao) {
         this.jobSeekerService = jobSeekerService;
         this.employerService = employerService;
         this.mrns = mrns;
@@ -38,6 +41,7 @@ public class AuthManager<T> implements AuthService {
         this.userDao = userDao;
         this.jobSeekerDao = jobSeekerDao;
         this.employerDao = employerDao;
+        this.SystemPersonnelDao = SystemPersonnelDao;
     }
 
     @Override
@@ -116,10 +120,13 @@ public class AuthManager<T> implements AuthService {
         var val = this.userDao.findByEmailAndPassword(email, password);
         var employer = this.employerDao.findByUserId(val.getId());
         var jobSeeker = this.jobSeekerDao.findByUserId(val.getId());
+        var systemPersonnel = this.SystemPersonnelDao.findByUserId(val.getId());
         if (employer != null) {
             return new SuccessDataResult<Employer>(employer, "Giriş Başarılı");
         } else if (jobSeeker != null) {
             return new SuccessDataResult<JobSeeker>(jobSeeker, "Giriş Başarılı");
+        } else if(systemPersonnel != null){
+            return new SuccessDataResult<SystemPersonnel>(systemPersonnel, "Giriş Başarılı");
         }
         else {
             return new ErrorDataResult<User>(null, "Hatalı Giriş!");

@@ -62,4 +62,10 @@ public class CVManager implements CVService {
     public DataResult<List<CV>> findByJobSeekerId(int jobSeekerId) {
         return new SuccessDataResult<List<CV>>(this.cvDao.findByJobSeekerId(jobSeekerId));
     }
+
+    @Override
+    public DataResult<List<CV>> getCv(int id) {
+        return new SuccessDataResult<List<CV>>(this.cvDao.getById(id));
+    }
+
 }

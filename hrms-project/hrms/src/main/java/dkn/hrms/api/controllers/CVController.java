@@ -29,4 +29,9 @@ public class CVController {
     public DataResult<List<CV>> findByJobSeekerId(@RequestParam int jobSeekerId) {
         return this.cvService.findByJobSeekerId(jobSeekerId);
     }
+
+    @GetMapping("/get-cv")
+    public DataResult<List<CV>> getCv(@RequestParam int id) {
+        return this.cvService.getCv(id);
+    }
 }

@@ -1,5 +1,6 @@
 package kodlamaIO.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +17,7 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
 public class Category {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private int categoryId;
     @Column(name = "category_name")
@@ -26,6 +27,7 @@ public class Category {
     @Column(name = "picture")
     private String picture;
 
+    @JsonIgnore
    @OneToMany(mappedBy = "category")
     private List<Product> products;
 }
